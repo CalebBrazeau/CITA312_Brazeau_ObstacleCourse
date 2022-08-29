@@ -8,13 +8,24 @@ public class Mover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("This is happening once on initialization");
+        PrintInstructions();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("This is happening once per frame");
+        MovePlayer();    
+    }
+
+    void PrintInstructions()
+    {
+        Debug.Log("Gaem");
+        Debug.Log("Movement: WASD");
+        Debug.Log("Don't hit the walls");
+    }
+
+    void MovePlayer()
+    {
         float fltxValue = Input.GetAxis("Horizontal") * Time.deltaTime * fltMoveSpeed;
         float fltzValue = Input.GetAxis("Vertical") * Time.deltaTime * fltMoveSpeed;
         transform.Translate(fltxValue, 0f, fltzValue);        
