@@ -8,12 +8,13 @@ public class Mover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Debug.Log("This is happening once on initialization");
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("This is happening once per frame");
         float fltxValue = Input.GetAxis("Horizontal") * Time.deltaTime * fltMoveSpeed;
         float fltzValue = Input.GetAxis("Vertical") * Time.deltaTime * fltMoveSpeed;
         transform.Translate(fltxValue, 0f, fltzValue);        
