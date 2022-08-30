@@ -7,10 +7,14 @@ public class Dropper : MonoBehaviour
     MeshRenderer renderer;
     Rigidbody rigidbody;
     [SerializeField] float fltTimeToWait = 3f;
+    private float fltAliveTime;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Set fltAliveTime to random number in range
+        fltAliveTime = Random.Range(10f, 40f);
+
         // Get objects Mesh Renderer
         renderer = GetComponent<MeshRenderer>();
         // Disable objects Mesh Renderer
@@ -31,6 +35,16 @@ public class Dropper : MonoBehaviour
             // Enable object mesh renderer and gravity
             renderer.enabled = true;
             rigidbody.useGravity = true;
+
+            // Decrement fltAliveTime
+            fltAliveTime -= Time.deltaTime;
+
+            // If fltAliveTime is less than or equal to zero
+            if(fltAliveTime <= 0)
+            {
+                // Destroy the game object
+                Destroy(gameObject);
+            }
         }
     }
 }
